@@ -1,0 +1,169 @@
+use("cineplus")
+
+db.users.insertMany([
+    {
+        user_id: "U001",
+        name: "Walter White",
+        email: "ww@gmail.com",
+        password: "ASAuuo99",
+        metodos_pago: ["Tarjeta","Efectivo","Tarjeta Asociado"]
+    },
+    {
+        user_id: "U002",
+        name: "Tony Soprano",
+        email: "tt@gmail.com",
+        password: "ASAujdjhd89",
+        metodos_pago: ["Efectivo"]
+    },
+    {
+        user_id: "U003",
+        name: "Max Verstappen",
+        email: "madmax@gmail.com",
+        password: "F0uRT1meW0rdlChampion",
+        metodos_pago: ["Tarjeta","Efectivo"]
+    }
+])
+
+db.peliculas.insertMany([
+    {
+        pelicula_id: "P001",
+        titulo: "El Padrino",
+        genero: "Drama",
+        director: "Francis Ford Coppola",
+        duracion: "190 minutos",
+        clasificacion: "C",
+        funcion_id: "F_PADRINO"
+    },
+    {
+        pelicula_id: "P002",
+        titulo: "Cars 1",
+        genero: "Accion",
+        director: "Michael Bay",
+        duracion: "90 minutos",
+        clasificacion: "R",
+        funcion_id: "F_CARS"
+    },
+    {
+        pelicula_id: "P003",
+        titulo: "El Ataque del MongoDB",
+        genero: "Horror",
+        director: "C.C",
+        duracion: "120 minutos",
+        clasificacion: "R",
+        funcion_id: "F_MONGO"
+    }
+])
+
+db.funciones.insertMany([
+    {
+        funcion_id: "F_PADRINO",
+        funciones_Disp:[
+            {
+                sala:{
+                    tipo: "Estandar",
+                    capacidad: 80,
+                    servicios: "ninguno",
+                    precio: 10000
+                },
+                fecha: "30-9-2025",
+                hora: "16:30",
+                precio_boleta: 10000,
+                numero_asientos: 80
+            },
+            {
+                sala:{
+                    tipo: "VIP",
+                    capacidad: 30,
+                    servicios: "BlackStar",
+                    precio: 20000
+                },
+                fecha: "5-10-2025",
+                hora: "20:00",
+                precio_boleta: 20000,
+                numero_asientos: 30
+            }
+        ]
+    },
+    {
+        funcion_id: "F_CARS",
+        funciones_Disp:[
+            {
+                sala:{
+                    tipo: "Eventos",
+                    capacidad: 100,
+                    servicios: "ninguno",
+                    precio: 15000
+                },
+                fecha: "5-10-2025",
+                hora: "14:30",
+                precio_boleta: 15000,
+                numero_asientos: 100
+            },
+            {
+                sala:{
+                    tipo: "Estandar",
+                    capacidad: 80,
+                    servicios: "ninguno",
+                    precio: 10000
+                },
+                fecha: "5-10-2025",
+                hora: "16:00",
+                precio_boleta: 10000,
+                numero_asientos: 80
+            }
+        ]
+    },
+    {
+        funcion_id: "F_MONGO",
+        funciones_Disp:[
+            {
+                sala:{
+                    tipo: "3D",
+                    capacidad: 80,
+                    servicios: "ninguno",
+                    precio: 12000
+                },
+                fecha: "3-10-2025",
+                hora: "18:00",
+                precio_boleta: 12000,
+                numero_asientos: 80
+            },
+            {
+                sala:{
+                    tipo: "Eventos",
+                    capacidad: 100,
+                    servicios: "ninguno",
+                    precio: 15000
+                },
+                fecha: "2-10-2025",
+                hora: "20:00",
+                precio_boleta: 15000,
+                numero_asientos: 100
+            },
+            {
+                sala:{
+                    tipo: "Estandar",
+                    capacidad: 100,
+                    servicios: "ninguno",
+                    precio: 15000
+                },
+                fecha: "2-10-2025",
+                hora: "22:30",
+                precio_boleta: 15000,
+                numero_asientos: 100
+            },
+            {
+                sala:{
+                    tipo: "Estandar",
+                    capacidad: 100,
+                    servicios: "ninguno",
+                    precio: 15000
+                },
+                fecha: "2-10-2025",
+                hora: "22:30",
+                precio_boleta: 15000,
+                numero_asientos: 100
+            }
+        ]
+    }
+])

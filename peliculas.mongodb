@@ -1,0 +1,34 @@
+use("cineplus")
+
+db.createCollection("peliculas", {
+    validator:{
+        $jsonSchema:{
+            bsonType: "object",
+            required: ["pelicula_id", "titulo", "funcion_id"],
+            properties:{
+                pelicula_id:{
+                    bsonType: "string"
+                },
+                titulo:{
+                    bsonType: "string"
+                },
+                genero:{
+                    bsonType: "string"
+                },
+                director:{
+                    bsonType: "string"
+                },
+                duracion:{
+                    bsonType: "string"
+                },
+                clasificacion:{
+                    bsonType: "string",
+                    enum: ["A", "B15", "C", "D", "R"]
+                },
+                funcion_id:{
+                    bsonType: "string"
+                }
+            }
+        }
+    }
+})

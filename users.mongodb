@@ -1,0 +1,31 @@
+use("cineplus")
+
+db.createCollection("users", {
+    validator:{
+        $jsonSchema:{
+            bsonType: "object",
+            required: ["user_id", "name", "email", "password"],
+            properties:{
+                user_id:{
+                    bsonType: "string"
+                },
+                name:{
+                    bsonType: "string"
+                },
+                email:{
+                    bsonType: "string"
+                },
+                password:{
+                    bsonType: "string"
+                },
+                metodos_pago:{
+                    bsonType: "array",
+                    minItems: 1,
+                    items:{
+                        bsonType: "string"
+                    }
+                }
+            }
+        }
+    }
+})

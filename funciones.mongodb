@@ -1,0 +1,52 @@
+use("cineplus")
+
+db.createCollection("funciones",{
+    validator:{
+        $jsonSchema:{
+            bsonType: "object",
+            properties:{
+                funcion_id:{
+                    bsonType: "string"
+                },
+                funciones_Disp:{
+                    bsonType: "array",
+                    items:{
+                        bsonType: "object",
+                        properties:{
+                            sala: {
+                                bsonType: "object",
+                                properties:{
+                                    tipo:{
+                                        bsonType: "string",
+                                        enum:["Estandar", "3D", "VIP", "Eventos"]
+                                    },
+                                    capacidad:{
+                                        bsonType: "number"
+                                    },
+                                    servicios:{
+                                        bsonType: "string"
+                                    },
+                                    precio:{
+                                        bsonType: "number"
+                                    }
+                                }
+                            },
+                            fecha:{
+                                bsonType: "string",
+                            },
+                            hora:{
+                                bsonType: "string"
+                            },
+                            precio_boleta:{
+                                bsonType: "number"
+                            },
+                            numero_asientos:{
+                                bsonType: "number"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+})

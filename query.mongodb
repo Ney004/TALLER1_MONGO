@@ -1,0 +1,17 @@
+use("cineplus")
+
+db.funciones.aggregate([
+    {
+        $match: {
+            funcion_id: "F_MONGO"
+        }
+    },
+    {
+        $unwind: "$funciones_Disp"
+    },
+    {
+        $match: {
+            "funciones_Disp.fecha": "2-10-2025"
+        }
+    }
+])

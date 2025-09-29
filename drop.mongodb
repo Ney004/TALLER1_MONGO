@@ -1,0 +1,5 @@
+use("cineplus")
+
+db.users.drop()
+db.peliculas.drop()
+db.funciones.drop()
