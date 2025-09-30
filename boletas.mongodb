@@ -1,0 +1,26 @@
+use("cineplus")
+
+db.createCollection("compra_boletas",{
+    validator:{
+        $jsonSchema:{
+            bsonType: "object",
+            properties:{
+                user_id:{
+                    bsonType: "string"
+                },
+                funcion_id:{
+                    bsonType: "string"
+                },
+                pelicula_id:{
+                    bsonType: "string"
+                },
+                cantidad:{
+                    bsonType: "number"
+                },
+                total:{
+                    bsonType: "number"
+                }
+            }
+        }
+    }
+})

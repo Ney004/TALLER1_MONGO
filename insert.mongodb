@@ -21,6 +21,13 @@ db.users.insertMany([
         email: "madmax@gmail.com",
         password: "F0uRT1meW0rdlChampion",
         metodos_pago: ["Tarjeta","Efectivo"]
+    },
+    {
+        user_id: "U004",
+        name: "Ruben Blades",
+        email: "lomato@gmail.com",
+        password: "pedroNavaja",
+        metodos_pago: ["Tarjeta","Efectivo"]
     }
 ])
 
@@ -60,6 +67,7 @@ db.funciones.insertMany([
         funciones_Disp:[
             {
                 sala:{
+                    sala_id: "estandar",
                     tipo: "Estandar",
                     capacidad: 80,
                     servicios: "ninguno",
@@ -72,6 +80,7 @@ db.funciones.insertMany([
             },
             {
                 sala:{
+                    sala_id: "vip",
                     tipo: "VIP",
                     capacidad: 30,
                     servicios: "BlackStar",
@@ -89,6 +98,7 @@ db.funciones.insertMany([
         funciones_Disp:[
             {
                 sala:{
+                    sala_id: "evento",
                     tipo: "Eventos",
                     capacidad: 100,
                     servicios: "ninguno",
@@ -101,6 +111,7 @@ db.funciones.insertMany([
             },
             {
                 sala:{
+                    sala_id: "estandar",
                     tipo: "Estandar",
                     capacidad: 80,
                     servicios: "ninguno",
@@ -118,6 +129,7 @@ db.funciones.insertMany([
         funciones_Disp:[
             {
                 sala:{
+                    sala_id: "3d",
                     tipo: "3D",
                     capacidad: 80,
                     servicios: "ninguno",
@@ -130,6 +142,7 @@ db.funciones.insertMany([
             },
             {
                 sala:{
+                    sala_id: "eventos",
                     tipo: "Eventos",
                     capacidad: 100,
                     servicios: "ninguno",
@@ -142,6 +155,7 @@ db.funciones.insertMany([
             },
             {
                 sala:{
+                    sala_id: "estandar",
                     tipo: "Estandar",
                     capacidad: 100,
                     servicios: "ninguno",
@@ -154,6 +168,7 @@ db.funciones.insertMany([
             },
             {
                 sala:{
+                    sala_id: "estandar",
                     tipo: "Estandar",
                     capacidad: 100,
                     servicios: "ninguno",
@@ -165,5 +180,118 @@ db.funciones.insertMany([
                 numero_asientos: 100
             }
         ]
+    }
+])
+
+db.compra_boletas.insertMany([
+    {
+        user_id: "U003",
+        funcion_id: "F_CARS",
+        pelicula_id: "P002",
+        cantidad: 3
+    },
+    {
+        user_id: "U002",
+        funcion_id: "F_PADRINO",
+        pelicula_id: "P001",
+        cantidad: 3
+    },
+    {
+        user_id: "U004",
+        funcion_id: "F_CARS",
+        pelicula_id: "P002",
+        cantidad: 3
+    },
+    {
+        user_id: "U001",
+        funcion_id: "F_MONGO",
+        pelicula_id: "P003",
+        cantidad: 3
+    }
+])
+
+db.confiteria.insertMany([
+    {
+        nombre: "Crispetas y Gaseosa",
+        tamaño: "personal",
+        precio: 6000,
+        stock: 50,
+        producto_id: "crispetas"
+    },
+    {
+        nombre: "Nachos",
+        tamaño: "MEGAcombo",
+        precio: 35000,
+        stock: 10,
+        producto_id: "nachos"
+    },
+    {
+        nombre: "Hot Dog",
+        tamaño: "comboX2",
+        precio: 15000,
+        stock: 50,
+        producto_id: "hot_dog"
+    },
+    {
+        nombre: "Crsipetas y Gaseosa",
+        tamaño: "comboX2",
+        precio: 12000,
+        stock: 50,
+        producto_id: "crispetas_comboX2"
+    },
+    {
+        nombre: "Chocolatina JET",
+        tamaño: "personal",
+        precio: 5000,
+        stock: 100,
+        producto_id: "estafa"
+    }
+])
+
+db.detalles_confiteria.insertMany([
+    {
+        user_id: "U003",
+        detalles:[
+            {
+                producto_id: "crispetas_comboX2",
+                fecha: new Date(2025,10,5)
+            },
+            {
+                producto_id: "estafa",
+                fecha: new Date(2025,10,5)
+            },
+            {
+                producto_id: "hot_dog",
+                fecha: new Date(2025,10,5)
+            },
+        ]
+    },
+    {
+        user_id: "U002",
+        detalles:[
+            {
+                producto_id: "crispetas",
+                fecha: new Date(2025,10,2)
+            }
+        ]
+    }
+])
+
+db.reservas.insertMany([
+    {
+        sala_id: "eventos",
+        user_id: "U002",
+        responsable: "Max Verstappen",
+        fecha_reserva: new Date(2025,10,5),
+        duracion: "5 HORAS",
+        asisten: "100 Personas Aprox."
+    },
+    {
+        sala_id: "eventos",
+        user_id: "U004",
+        responsable: "Ruben Blades",
+        fecha_reserva: new Date(2025,10,2),
+        duracion: "4 HORAS",
+        asisten: "80 Personas Aprox."
     }
 ])

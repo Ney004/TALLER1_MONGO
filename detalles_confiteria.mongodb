@@ -1,0 +1,28 @@
+use("cineplus")
+
+db.createCollection("detalles_confiteria",{
+    validator:{
+        $jsonSchema:{
+            bsonType: "object",
+            properties:{
+                user_id:{
+                    bsonType: "string"
+                },
+                detalles:{
+                    bsonType:"array",
+                    items:{
+                        bsonType: "object",
+                        properties:{
+                            producto_id:{
+                                bsonType: "string"
+                            },
+                            fecha:{
+                                bsonType: "date"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+})

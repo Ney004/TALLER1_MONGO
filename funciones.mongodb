@@ -16,6 +16,9 @@ db.createCollection("funciones",{
                             sala: {
                                 bsonType: "object",
                                 properties:{
+                                    sala_id:{
+                                        bsonType: "string"
+                                    },
                                     tipo:{
                                         bsonType: "string",
                                         enum:["Estandar", "3D", "VIP", "Eventos"]

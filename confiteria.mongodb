@@ -1,0 +1,27 @@
+use("cineplus")
+
+db.createCollection("confiteria", {
+    validator:{
+        $jsonSchema:{
+            bsonType: "object",
+            properties:{
+                nombre:{
+                    bsonType: "string"
+                },
+                tamaño:{
+                    bsonType: "string",
+                    enum: ["personal", "comboX2", "MEGAcombo"]
+                },
+                precio:{
+                    bsonType: "number"
+                },
+                stock:{
+                    bsonType: "number"
+                },
+                producto_id:{
+                    bsonType: "string"
+                },
+            }
+        }
+    }
+})

@@ -1,5 +1,6 @@
 use("cineplus")
 
+// Listar todas las funciones programadas de una película en una fecha determinada.
 db.funciones.aggregate([
     {
         $match: {
@@ -13,5 +14,74 @@ db.funciones.aggregate([
         $match: {
             "funciones_Disp.fecha": "2-10-2025"
         }
+    },
+    {
+        $lookup: {
+            from: "peliculas",
+            localField: "funcion_id",
+            foreignField: "funcion_id",
+            as: "pelicula"
+        }
     }
 ])
+
+// Obtener los clientes que compraron boletas para una película específica.
+db.compra_boletas.aggregate([
+    {
+        $match: {
+            pelicula_id: "P002"
+        }
+    },
+    {
+        $lookup: {
+            from: "users",
+            localField: "user_id",
+            foreignField: "user_id",
+            as: "Cliente"
+        }
+    },
+    {
+        $lookup: {
+            from: "peliculas",
+            localField: "funcion_id",
+            foreignField: "funcion_id",
+            as: "PELICULA"
+        }
+    }
+])
+
+// Mostrar todas las compras realizadas en confitería por un cliente.
+db.users.aggregate([
+    {
+        $match: { name: "Max Verstappen" }
+    },
+    {
+        $lookup: {
+            from: "detalles_confiteria",
+            localField: "user_id",
+            foreignField: "user_id",
+            as: "compras"
+        }
+    },
+    {
+        $unwind: "$compras"
+    },
+    {
+        $unwind: "$compras.detalles"
+    },
+    {
+        $lookup: {
+            from: "confiteria",
+            localField: "compras.detalles.producto_id",
+            foreignField: "producto_id",
+            as: "producto"
+        }
+    },
+    {
+        $unwind: "$producto"
+    }
+])
+
+// Consultar los eventos privados reservados en una sala específica, incluyendo el nombre del cliente responsable y la fecha del evento.
+
+db.reservas.find({"sala_id": "eventos"})

@@ -1,0 +1,29 @@
+use("cineplus")
+
+db.createCollection("reservas",{
+    validator:{
+        $jsonSchema:{
+            bsonType: "object",
+            properties:{
+                sala_id:{
+                    bsonType: "string"
+                },
+                user_id:{
+                    bsonType: "string"
+                },
+                responsable:{
+                    bsonType: "string"
+                },
+                fecha_reserva:{
+                    bsonType: "date"
+                },
+                duracion:{
+                    bsonType: "string"
+                },
+                asisten: {
+                    bsonType: "number"
+                }
+            }
+        }
+    }
+})
