@@ -1,0 +1,32 @@
+use("cineplus")
+
+db.createCollection("resenas",{
+    validator:{
+        $jsonSchema:{
+            bsonType: "object",
+            properties:{
+                resenas:{
+                    bsonType:"array",
+                    items:{
+                        bsonType: "object",
+                        properties:{
+                            user_id:{
+                                bsonType: "string"
+                            },
+                            pelicula_id:{
+                                bsonType: "string"
+                            },
+                            calificacion:{
+                                bsonType: "number"
+                            },
+                            comentario:{
+                                bsonType: "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+})
+

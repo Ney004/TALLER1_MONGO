@@ -22,6 +22,28 @@ db.funciones.aggregate([
             foreignField: "funcion_id",
             as: "pelicula"
         }
+    },
+    {
+        $unwind: "$pelicula"
+    },
+    {
+        $lookup: {
+            from: "peliculas",
+            localField: "funcion_id",
+            foreignField: "funcion_id",
+            as: "info"
+        }
+    },
+    {
+        $unwind: "$info"
+    },
+    {
+        $project: {
+            titulo: "$info.titulo",
+            sala: "$funciones_Disp.sala.tipo",
+            fecha: "$funciones_Disp.fecha",
+            hora: "$funciones_Disp.hora"
+        }
     }
 ])
 
@@ -41,11 +63,23 @@ db.compra_boletas.aggregate([
         }
     },
     {
+        $unwind: "$Cliente"
+    },
+    {
         $lookup: {
             from: "peliculas",
             localField: "funcion_id",
             foreignField: "funcion_id",
             as: "PELICULA"
+        }
+    },
+    {
+        $unwind: "$PELICULA"
+    },
+    {
+        $project: {
+            pelicula: "$PELICULA.titulo",
+            cliente: "$Cliente.name"
         }
     }
 ])
@@ -60,28 +94,77 @@ db.users.aggregate([
             from: "detalles_confiteria",
             localField: "user_id",
             foreignField: "user_id",
-            as: "compras"
+            as: "COMPRAS"
         }
     },
     {
-        $unwind: "$compras"
+        $unwind: "$COMPRAS"
     },
     {
-        $unwind: "$compras.detalles"
+        $unwind: "$COMPRAS.detalles"
     },
     {
         $lookup: {
             from: "confiteria",
-            localField: "compras.detalles.producto_id",
+            localField: "COMPRAS.detalles.producto_id",
             foreignField: "producto_id",
             as: "producto"
         }
     },
     {
         $unwind: "$producto"
+    },
+    {
+        $project: {
+            cliente: "$name",
+            compras: "$COMPRAS.detalles",
+            producto: "$producto.nombre"
+        }
     }
 ])
 
-// Consultar los eventos privados reservados en una sala específica, incluyendo el nombre del cliente responsable y la fecha del evento.
+// Consultar los eventos privados reservados en una sala específica, incluyendo el nombre del cliente responsable y la fecha del evento. */
+//db.reservas.find({"sala_id": "eventos"})
 
-db.reservas.find({"sala_id": "eventos"})
+// Consultar todas las peliculas con una calificion superior a 7
+db.resenas.aggregate([
+    {
+        $unwind: "$resenas"
+    },
+    {
+        $match: {
+            "resenas.calificacion": {$gt: 7}
+        }
+    },
+    {
+        $lookup: {
+            from: "users",
+            localField: "resenas.user_id",
+            foreignField: "user_id",
+            as: "USUARIO"
+        }
+    },
+    {
+        $unwind: "$USUARIO"
+    },
+    {
+        $lookup: {
+            from: "peliculas",
+            localField: "resenas.pelicula_id",
+            foreignField: "pelicula_id",
+            as: "PELICULA"
+        }
+    },
+    {
+        $unwind: "$PELICULA"
+    },
+    {
+    $project: {
+        _id:0,
+        titulo: "$PELICULA.titulo",
+        usuario: "$USUARIO.name",
+        calificacion: "$resenas.calificacion",
+        comentario: "$resenas.comentario"
+        }
+    }
+])

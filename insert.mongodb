@@ -284,7 +284,7 @@ db.reservas.insertMany([
         responsable: "Max Verstappen",
         fecha_reserva: new Date(2025,10,5),
         duracion: "5 HORAS",
-        asisten: "100 Personas Aprox."
+        asisten: 100
     },
     {
         sala_id: "eventos",
@@ -292,6 +292,47 @@ db.reservas.insertMany([
         responsable: "Ruben Blades",
         fecha_reserva: new Date(2025,10,2),
         duracion: "4 HORAS",
-        asisten: "80 Personas Aprox."
+        asisten: 80
     }
 ])
+
+db.resenas.insertOne({  
+    resenas:[
+        {
+            user_id: "U004",
+            pelicula_id: "P003",
+            calificacion: 2,
+            comentario: "Muy Mala Pelicula, no la recomiendo para nada"
+        },
+        {
+            user_id: "U004",
+            pelicula_id: "P001",
+            calificacion: 10,
+            comentario: "Un visionario el director Francis Ford Coppola"
+        },
+        {
+            user_id: "U003",
+            pelicula_id: "P002",
+            calificacion: 9,
+            comentario: "No le doy el 10 perfecto, por que Chick Hicks no debio ganar la copa piston"
+        },
+        {
+            user_id: "U002",
+            pelicula_id: "P001",
+            calificacion: 8,
+            comentario: "Los mafiosos de verdad no lloramos"
+        },
+        {
+            user_id: "U001",
+            pelicula_id: "P001",
+            calificacion: 4,
+            comentario: "que mala pelicula"
+        },
+        {
+            user_id: "U003",
+            pelicula_id: "P001",
+            calificacion: 5,
+            comentario: "No hay carreras en esta pelicula, que aburrido"
+        }
+    ]
+})
